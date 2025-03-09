@@ -14,84 +14,97 @@
         <input type="text" placeholder="Search for products...">
     </nav>
 
-    <!-- Categories -->
-    <div class="categories">
-    <button>Sweet</button>
-    <button>Milk Products</button>
-    <button>Snacks</button>
-    <button>Fast Food</button>
-    <button>Ready-Made Food</button>
-    <button>Vegetables</button>
-    <button>Perfumes</button>
-    <button>Mobile Accessories</button>
-    <button>Cigarette</button>
-    <button>Masale</button>
-    <button>Keychain</button>
-    <button>Lighter</button>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRI Mart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            background: green;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: darkgreen;
+        }
+        .product {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin: 5px;
+            display: inline-block;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>NRI Mart</h1>
+
+    <!-- Category Buttons -->
+    <button class="btn" onclick="filterProducts('All')">All</button>
+    <button class="btn" onclick="filterProducts('Sweet')">Sweet</button>
+    <button class="btn" onclick="filterProducts('Milk Products')">Milk Products</button>
+    <button class="btn" onclick="filterProducts('Snacks')">Snacks</button>
+    <button class="btn" onclick="filterProducts('Fast Food')">Fast Food</button>
+    <button class="btn" onclick="filterProducts('Ready-Made Food')">Ready-Made Food</button>
+    <button class="btn" onclick="filterProducts('Vegetables')">Vegetables</button>
+    <button class="btn" onclick="filterProducts('Perfumes')">Perfumes</button>
+    <button class="btn" onclick="filterProducts('Mobile Accessories')">Mobile Accessories</button>
+    <button class="btn" onclick="filterProducts('Cigarette')">Cigarette</button>
+    <button class="btn" onclick="filterProducts('Masale')">Masale</button>
+    <button class="btn" onclick="filterProducts('Keychain')">Keychain</button>
+    <button class="btn" onclick="filterProducts('Lighter')">Lighter</button>
+
+    <!-- Product List -->
+    <div id="product-list">
+        <div class="product" data-category="Sweet">Laddu</div>
+        <div class="product" data-category="Milk Products">Paneer</div>
+        <div class="product" data-category="Snacks">Chips</div>
+        <div class="product" data-category="Fast Food">Burger</div>
+        <div class="product" data-category="Ready-Made Food">Instant Noodles</div>
+        <div class="product" data-category="Vegetables">Tomato</div>
+        <div class="product" data-category="Perfumes">Axe Spray</div>
+        <div class="product" data-category="Mobile Accessories">Earphones</div>
+        <div class="product" data-category="Cigarette">Gold Flake</div>
+        <div class="product" data-category="Masale">Garam Masala</div>
+        <div class="product" data-category="Keychain">Car Keychain</div>
+        <div class="product" data-category="Lighter">Zippo Lighter</div>
+    </div>
 </div>
 
-    <script src="script.js"></script>
-</b<!-- Products Section -->
-<div id="products">
-    <div class="product" data-category="Sweet">Laddu</div>
-    <div class="product" data-category="Milk Products">Paneer</div>
-    <div class="product" data-category="Snacks">Chips</div>
-    <div class="product" data-category="Fast Food">Burger</div>
-    <div class="product" data-category="Ready-Made Food">Instant Noodles</div>
-    <div class="product" data-category="Vegetables">Tomato</div>
-    <div class="product" data-category="Perfumes">Axe Spray</div>
-    <div class="product" data-category="Mobile Accessories">Earphones</div>
-    <div class="product" data-category="Cigarette">Gold Flake</div>
-    <div class="product" data-category="Masale">Garam Masala</div>
-    <div class="product" data-category="Keychain">Car Keychain</div>
-    <div class="product" data-category="Lighter">Zippo Lighter</div>
-</div>body><script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let buttons = document.querySelectorAll("button");
+<script>
+    function filterProducts(category) {
         let products = document.querySelectorAll(".product");
 
-        buttons.forEach(button => {
-            button.addEventListener("click", function () {
-                let category = this.textContent;
-                
-                products.forEach(product => {
-                    if (category === "All" || product.getAttribute("data-category") === category) {
-                        product.style.display = "block";
-                    } else {
-                        product.style.display = "none";
-                    }
-                });
-            });
+        products.forEach(product => {
+            if (category === "All" || product.getAttribute("data-category") === category) {
+                product.style.display = "inline-block";
+            } else {
+                product.style.display = "none";
+            }
         });
-    });
-</script><script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let buttons = document.querySelectorAll("button");
-        let products = document.querySelectorAll(".product");
-
-        buttons.forEach(button => {
-            button.addEventListener("click", function () {
-                let category = this.textContent;
-
-                products.forEach(product => {
-                    if (category === "All" || product.getAttribute("data-category") === category) {
-                        product.style.display = "block";
-                    } else {
-                        product.style.display = "none";
-                    }
-                });
-            });
-        });
-    });
+    }
 </script>
 
-<style>
-    .product {
-        padding: 10px;
-        border: 1px solid #ddd;
-        margin: 5px;
-        display: inline-block;
-        background-color: white;
-    }
-</style>
+</body>
 </html>

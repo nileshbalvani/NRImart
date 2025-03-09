@@ -4,143 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NRI Mart</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- Navbar -->
-    <nav class="navbar">
-        <h1>NRI Mart</h1>
-        <input type="text" placeholder="Search for products...">
-    </nav>
-
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NRI Mart</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
             text-align: center;
+            background-color: #f4f4f4;
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .btn {
-            padding: 10px 15px;
-            margin: 5px;
-            border: none;
-            background: green;
+        .header {
+            background-color: green;
             color: white;
+            padding: 15px;
+            font-size: 24px;
+        }
+        .search-bar {
+            margin: 10px;
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+        }
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 10px;
+        }
+        .category {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            margin: 5px;
             cursor: pointer;
             border-radius: 5px;
         }
-        .btn:hover {
-            background: darkgreen;
+        .products {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
         }
         .product {
+            background: white;
             padding: 10px;
-            border: 1px solid #ddd;
-            margin: 5px;
-            display: inline-block;
-            background-color: white;
+            margin: 10px;
+            border-radius: 5px;
+            text-align: center;
+            width: 150px;
+            box-shadow: 0px 0px 5px gray;
+        }
+        .product img {
+            width: 100px;
+            height: 100px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>NRI Mart</h1>
+    <div class="header">NRI Mart</div>
 
-    <!-- Category Buttons -->
-    <button class="btn" onclick="filterProducts('All')">All</button>
-    <button class="btn" onclick="filterProducts('Sweet')">Sweet</button>
-    <button class="btn" onclick="filterProducts('Milk Products')">Milk Products</button>
-    <button class="btn" onclick="filterProducts('Snacks')">Snacks</button>
-    <button class="btn" onclick="filterProducts('Fast Food')">Fast Food</button>
-    <button class="btn" onclick="filterProducts('Ready-Made Food')">Ready-Made Food</button>
-    <button class="btn" onclick="filterProducts('Vegetables')">Vegetables</button>
-    <button class="btn" onclick="filterProducts('Perfumes')">Perfumes</button>
-    <button class="btn" onclick="filterProducts('Mobile Accessories')">Mobile Accessories</button>
-    <button class="btn" onclick="filterProducts('Cigarette')">Cigarette</button>
-    <button class="btn" onclick="filterProducts('Masale')">Masale</button>
-    <button class="btn" onclick="filterProducts('Keychain')">Keychain</button>
-    <button class="btn" onclick="filterProducts('Lighter')">Lighter</button>
+    <input type="text" class="search-bar" placeholder="Search for products...">
 
-    <!-- Product List -->
-    <div id="product-list">
-        <div class="product" data-category="Sweet">Laddu</div>
-        <div class="product" data-category="Milk Products">Paneer</div>
-        <div class="product" data-category="Snacks">Chips</div>
-        <div class="product" data-category="Fast Food">Burger</div>
-        <div class="product" data-category="Ready-Made Food">Instant Noodles</div>
-        <div class="product" data-category="Vegetables">Tomato</div>
-        <div class="product" data-category="Perfumes">Axe Spray</div>
-        <div class="product" data-category="Mobile Accessories">Earphones</div>
-        <div class="product" data-category="Cigarette">Gold Flake</div>
-        <div class="product" data-category="Masale">Garam Masala</div>
-        <div class="product" data-category="Keychain">Car Keychain</div>
-        <div class="product" data-category="Lighter">Zippo Lighter</div>
-    </div><!-- Categories Section -->
-<div id="categories">
-    <button onclick="filterProducts('All')">All</button>
-    <button onclick="filterProducts('Milk Products')">Milk Products</button>
-    <button onclick="filterProducts('Bread & Pav')">Bread & Pav</button>
-    <button onclick="filterProducts('Flakes & Kids Cereals')">Flakes & Kids Cereals</button>
-    <button onclick="filterProducts('Dry Fruits')">Dry Fruits</button>
-    <button onclick="filterProducts('Fruits')">Fruits</button>
-    <button onclick="filterProducts('Vegetables')">Vegetables</button>
-    <button onclick="filterProducts('Maggi & Sauces')">Maggi & Sauces</button>
-    <button onclick="filterProducts('Body Care')">Body Care</button>
-    <button onclick="filterProducts('Rice')">Rice</button>
-    <button onclick="filterProducts('Flour & Atta')">Flour & Atta</button>
-    <button onclick="filterProducts('Oil')">Oil</button>
-    <button onclick="filterProducts('Bakery')">Bakery</button>
-    <button onclick="filterProducts('Snacks')">Snacks</button>
-    <button onclick="filterProducts('Men Accessories')">Men Accessories</button>
-    <button onclick="filterProducts('Mobile Accessories')">Mobile Accessories</button>
-</div>
+    <div class="categories">
+        <div class="category" onclick="showProducts('milk')">Milk Products</div>
+        <div class="category" onclick="showProducts('bread')">Bread & Pav</div>
+        <div class="category" onclick="showProducts('cereals')">Flakes & Kids Cereals</div>
+        <div class="category" onclick="showProducts('dryfruits')">Dry Fruits</div>
+        <div class="category" onclick="showProducts('fruits')">Fruits</div>
+        <div class="category" onclick="showProducts('vegetables')">Vegetables</div>
+        <div class="category" onclick="showProducts('maggi')">Maggi & Sauces</div>
+        <div class="category" onclick="showProducts('bodycare')">Body Care</div>
+        <div class="category" onclick="showProducts('rice')">Rice</div>
+        <div class="category" onclick="showProducts('flour')">Flour & Atta</div>
+        <div class="category" onclick="showProducts('oil')">Oil</div>
+        <div class="category" onclick="showProducts('bakery')">Bakery</div>
+        <div class="category" onclick="showProducts('snacks')">Snacks</div>
+        <div class="category" onclick="showProducts('men')">Men Accessories</div>
+        <div class="category" onclick="showProducts('mobile')">Mobile Accessories</div>
+    </div>
 
-<!-- Products Section -->
-<div id="products">
-    <div class="product" data-category="Milk Products"><img src="images/milk.png" alt="Milk">Milk - ₹50</div>
-    <div class="product" data-category="Bread & Pav"><img src="images/bread.png" alt="Bread">Bread - ₹30</div>
-    <div class="product" data-category="Flakes & Kids Cereals"><img src="images/cereal.png" alt="Cereal">Corn Flakes - ₹80</div>
-    <div class="product" data-category="Dry Fruits"><img src="images/almond.png" alt="Almond">Almonds - ₹200</div>
-    <div class="product" data-category="Fruits"><img src="images/apple.png" alt="Apple">Apple - ₹120/kg</div>
-    <div class="product" data-category="Vegetables"><img src="images/tomato.png" alt="Tomato">Tomato - ₹40/kg</div>
-    <div class="product" data-category="Maggi & Sauces"><img src="images/maggi.png" alt="Maggi">Maggi - ₹25</div>
-    <div class="product" data-category="Body Care"><img src="images/shampoo.png" alt="Shampoo">Shampoo - ₹180</div>
-    <div class="product" data-category="Rice"><img src="images/rice.png" alt="Rice">Basmati Rice - ₹90/kg</div>
-    <div class="product" data-category="Flour & Atta"><img src="images/atta.png" alt="Atta">Wheat Flour - ₹60/kg</div>
-    <div class="product" data-category="Oil"><img src="images/oil.png" alt="Oil">Cooking Oil - ₹180/ltr</div>
-    <div class="product" data-category="Bakery"><img src="images/cake.png" alt="Cake">Chocolate Cake - ₹250</div>
-    <div class="product" data-category="Snacks"><img src="images/chips.png" alt="Chips">Chips - ₹30</div>
-    <div class="product" data-category="Men Accessories"><img src="images/wallet.png" alt="Wallet">Wallet - ₹400</div>
-    <div class="product" data-category="Mobile Accessories"><img src="images/earphones.png" alt="Earphones">Earphones - ₹500</div>
-</div>
-</div>
+    <div id="milk" class="products">
+        <div class="product"><img src="milk.jpg" alt="Milk"><br>Amul Toned Milk - ₹50</div>
+        <div class="product"><img src="milk.jpg" alt="Milk"><br>Mother Dairy Milk - ₹55</div>
+    </div>
 
-<script>
-    function filterProducts(category) {
-    let products = document.querySelectorAll('.product');
-    products.forEach(product => {
-        if (category === 'All' || product.getAttribute('data-category') === category) {
-            product.style.display = "block";
-        } else {
-            product.style.display = "none";
+    <div id="bread" class="products">
+        <div class="product"><img src="bread.jpg" alt="Bread"><br>White Bread - ₹30</div>
+        <div class="product"><img src="bread.jpg" alt="Bread"><br>Brown Bread - ₹35</div>
+    </div>
+
+    <div id="cereals" class="products">
+        <div class="product"><img src="cereal.jpg" alt="Cereal"><br>Corn Flakes - ₹80</div>
+        <div class="product"><img src="cereal.jpg" alt="Cereal"><br>Choco Flakes - ₹90</div>
+    </div>
+
+    <div id="dryfruits" class="products">
+        <div class="product"><img src="almond.jpg" alt="Almond"><br>Almonds - ₹200</div>
+        <div class="product"><img src="cashew.jpg" alt="Cashew"><br>Cashews - ₹250</div>
+    </div>
+
+    <div id="fruits" class="products">
+        <div class="product"><img src="apple.jpg" alt="Apple"><br>Apple - ₹150/kg</div>
+        <div class="product"><img src="banana.jpg" alt="Banana"><br>Banana - ₹50/kg</div>
+    </div>
+
+    <div id="vegetables" class="products">
+        <div class="product"><img src="tomato.jpg" alt="Tomato"><br>Tomato - ₹40/kg</div>
+        <div class="product"><img src="potato.jpg" alt="Potato"><br>Potato - ₹30/kg</div>
+    </div>
+
+    <script>
+        function showProducts(category) {
+            var allProducts = document.querySelectorAll('.products');
+            allProducts.forEach(function(prod) {
+                prod.style.display = "none";
+            });
+            document.getElementById(category).style.display = "flex";
         }
-    });
-}
-</script>
+    </script>
 
 </body>
 </html>

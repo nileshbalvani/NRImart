@@ -7,63 +7,61 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="header">
+
+    <header class="header">
         <h1>NRI Mart</h1>
-    </div>
+    </header>
 
     <div class="search-bar">
         <input type="text" placeholder="Search for products...">
     </div>
 
     <div class="categories">
-        <button class="category-btn" onclick="filterCategory('All')">All</button>
-        <button class="category-btn" onclick="filterCategory('Milk Products')">Milk Products</button>
-        <button class="category-btn" onclick="filterCategory('Bread & Pav')">Bread & Pav</button>
-        <button class="category-btn" onclick="filterCategory('Flakes & Kids Cereals')">Flakes & Kids Cereals</button>
-        <button class="category-btn" onclick="filterCategory('Dry Fruits')">Dry Fruits</button>
-        <button class="category-btn" onclick="filterCategory('Fruits')">Fruits</button>
-        <button class="category-btn" onclick="filterCategory('Vegetables')">Vegetables</button>
-        <button class="category-btn" onclick="filterCategory('Maggi & Sauces')">Maggi & Sauces</button>
-        <button class="category-btn" onclick="filterCategory('Body Care')">Body Care</button>
-        <button class="category-btn" onclick="filterCategory('Rice')">Rice</button>
-        <button class="category-btn" onclick="filterCategory('Flour & Atta')">Flour & Atta</button>
-        <button class="category-btn" onclick="filterCategory('Oil')">Oil</button>
-        <button class="category-btn" onclick="filterCategory('Bakery')">Bakery</button>
-        <button class="category-btn" onclick="filterCategory('Snacks')">Snacks</button>
-        <button class="category-btn" onclick="filterCategory('Men Accessories')">Men Accessories</button>
-        <button class="category-btn" onclick="filterCategory('Mobile Accessories')">Mobile Accessories</button>
+        <button class="category-btn" onclick="filterProducts('all')">All</button>
+        <button class="category-btn" onclick="filterProducts('milk')">Milk Products</button>
+        <button class="category-btn" onclick="filterProducts('bread')">Bread & Pav</button>
+        <button class="category-btn" onclick="filterProducts('cereals')">Flakes & Cereals</button>
+        <button class="category-btn" onclick="filterProducts('dry-fruits')">Dry Fruits</button>
+        <button class="category-btn" onclick="filterProducts('fruits')">Fruits</button>
+        <button class="category-btn" onclick="filterProducts('vegetables')">Vegetables</button>
+        <button class="category-btn" onclick="filterProducts('snacks')">Snacks</button>
+        <button class="category-btn" onclick="filterProducts('accessories')">Accessories</button>
     </div>
 
-    <div class="product-list">
-        <div class="product" data-category="Milk Products">
+    <div id="product-list">
+        <div class="product milk">
             <img src="images/milk.jpg" alt="Milk">
             <p>Milk - ₹50</p>
         </div>
-        <div class="product" data-category="Bread & Pav">
+
+        <div class="product bread">
             <img src="images/bread.jpg" alt="Bread">
             <p>Bread - ₹40</p>
         </div>
-        <div class="product" data-category="Flakes & Kids Cereals">
+
+        <div class="product cereals">
             <img src="images/cornflakes.jpg" alt="Corn Flakes">
             <p>Corn Flakes - ₹80</p>
         </div>
-        <div class="product" data-category="Dry Fruits">
+
+        <div class="product dry-fruits">
             <img src="images/almonds.jpg" alt="Almonds">
             <p>Almonds - ₹600/kg</p>
         </div>
     </div>
 
     <script>
-        function filterCategory(category) {
+        function filterProducts(category) {
             let products = document.querySelectorAll('.product');
             products.forEach(product => {
-                if (category === 'All' || product.getAttribute('data-category') === category) {
-                    product.style.display = "block";
+                if (category === 'all' || product.classList.contains(category)) {
+                    product.style.display = 'block';
                 } else {
-                    product.style.display = "none";
+                    product.style.display = 'none';
                 }
             });
         }
     </script>
+
 </body>
 </html>

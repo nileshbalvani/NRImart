@@ -131,16 +131,15 @@
 
 <script>
     function filterProducts(category) {
-        let products = document.querySelectorAll(".product");
-
-        products.forEach(product => {
-            if (category === "All" || product.getAttribute("data-category") === category) {
-                product.style.display = "inline-block";
-            } else {
-                product.style.display = "none";
-            }
-        });
-    }
+    let products = document.querySelectorAll('.product');
+    products.forEach(product => {
+        if (category === 'All' || product.getAttribute('data-category') === category) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+}
 </script>
 
 </body>

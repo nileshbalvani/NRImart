@@ -45,5 +45,53 @@
     <div class="product" data-category="Masale">Garam Masala</div>
     <div class="product" data-category="Keychain">Car Keychain</div>
     <div class="product" data-category="Lighter">Zippo Lighter</div>
-</div>ody>
+</div>body><script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let buttons = document.querySelectorAll("button");
+        let products = document.querySelectorAll(".product");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                let category = this.textContent;
+                
+                products.forEach(product => {
+                    if (category === "All" || product.getAttribute("data-category") === category) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+</script><script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let buttons = document.querySelectorAll("button");
+        let products = document.querySelectorAll(".product");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                let category = this.textContent;
+
+                products.forEach(product => {
+                    if (category === "All" || product.getAttribute("data-category") === category) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<style>
+    .product {
+        padding: 10px;
+        border: 1px solid #ddd;
+        margin: 5px;
+        display: inline-block;
+        background-color: white;
+    }
+</style>
 </html>
